@@ -2,6 +2,8 @@
 use actix_web::{cookie::Cookie, post, web, HttpResponse, Responder};
 use serde::{Deserialize, Serialize};
 
+use crate::db::Pool;
+
 #[derive(Debug, Deserialize)]
 pub struct LoginRequest {
     pub email: String,
@@ -15,7 +17,7 @@ pub struct LoginResponse {
 }
 
 #[post("/Login")]
-pub async fn login() -> impl Responder {
+pub async fn login(pool: web::Data<Pool>, login_data: web::Json<LoginResponse>) -> impl Responder {
     print!("Here we are!");
 
     HttpResponse::Ok().body("Login Method")

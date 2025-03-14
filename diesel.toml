@@ -6,4 +6,4 @@ file = "src/db/schema/schema.rs"
 custom_type_derives = ["diesel::query_builder::QueryId", "Clone"]
 
 [migrations_directory]
-dir = "C:\\Users\\Ingeniero Software\\Documents\\projetc\\dms-backend\\migrations"
+dir = "C:\\Users\\Ingeniero Software\\Documents\\GitHub\\RS-Simple_BE\\migrations"

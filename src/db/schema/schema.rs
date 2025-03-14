@@ -5,8 +5,12 @@ diesel::table! {
         id -> Int2,
         #[max_length = 30]
         name -> Varchar,
-        create_time -> Date,
-        update_time -> Nullable<Date>,
+        created_at -> Timestamptz,
+        updated_at -> Nullable<Timestamptz>,
+        #[max_length = 255]
+        created_by -> Nullable<Varchar>,
+        #[max_length = 255]
+        updated_by -> Nullable<Varchar>,
     }
 }
 
@@ -17,49 +21,70 @@ diesel::table! {
         provider_account_id -> Varchar,
         provider_id -> Int2,
         user_id -> Int4,
+        created_at -> Timestamptz,
+        updated_at -> Nullable<Timestamptz>,
+        #[max_length = 255]
+        created_by -> Nullable<Varchar>,
+        #[max_length = 255]
+        updated_by -> Nullable<Varchar>,
+        deleted_at -> Nullable<Timestamptz>,
     }
 }
 
 diesel::table! {
     provider_type (id) {
-        id -> Int4,
+        id -> Int2,
         #[max_length = 255]
         name -> Varchar,
-        create_time -> Date,
-        update_time -> Nullable<Date>,
+        created_at -> Timestamptz,
+        updated_at -> Nullable<Timestamptz>,
+        #[max_length = 255]
+        created_by -> Nullable<Varchar>,
+        #[max_length = 255]
+        updated_by -> Nullable<Varchar>,
     }
 }
 
 diesel::table! {
     session (id) {
-        #[max_length = 255]
-        id -> Varchar,
+        id -> Uuid,
         user_id -> Int4,
         expires_at -> Timestamptz,
-        created_at -> Date,
+        created_at -> Timestamptz,
+        updated_at -> Nullable<Timestamptz>,
+        #[max_length = 255]
+        created_by -> Nullable<Varchar>,
+        deleted_at -> Nullable<Timestamptz>,
     }
 }
 
 diesel::table! {
     temporal_tokens (id) {
-        #[max_length = 60]
-        id -> Varchar,
+        id -> Uuid,
         user_id -> Int4,
         #[max_length = 80]
         hashed_token -> Varchar,
         expires_at -> Timestamptz,
-        token_type -> Int4,
-        created_time -> Timestamp,
+        token_type -> Int2,
+        created_at -> Timestamptz,
+        updated_at -> Nullable<Timestamptz>,
+        #[max_length = 255]
+        created_by -> Nullable<Varchar>,
+        deleted_at -> Nullable<Timestamptz>,
     }
 }
 
 diesel::table! {
     token_type (id) {
-        id -> Int4,
+        id -> Int2,
         #[max_length = 100]
         name -> Varchar,
-        create_time -> Date,
-        update_time -> Nullable<Date>,
+        created_at -> Timestamptz,
+        updated_at -> Nullable<Timestamptz>,
+        #[max_length = 255]
+        created_by -> Nullable<Varchar>,
+        #[max_length = 255]
+        updated_by -> Nullable<Varchar>,
     }
 }
 
@@ -82,13 +107,19 @@ diesel::table! {
         birth_date -> Date,
         #[max_length = 100]
         phone_number -> Varchar,
-        #[max_length = 40]
+        #[max_length = 100]
         document_id -> Varchar,
         document_type_id -> Int2,
         status_id -> Int2,
         user_type_id -> Int2,
-        created_at -> Date,
-        updated_at -> Nullable<Date>,
+        created_at -> Timestamptz,
+        updated_at -> Nullable<Timestamptz>,
+        last_login -> Nullable<Timestamptz>,
+        #[max_length = 255]
+        created_by -> Nullable<Varchar>,
+        #[max_length = 255]
+        updated_by -> Nullable<Varchar>,
+        deleted_at -> Nullable<Timestamptz>,
     }
 }
 
@@ -97,8 +128,12 @@ diesel::table! {
         id -> Int2,
         #[max_length = 60]
         name -> Varchar,
-        created_at -> Date,
-        updated_at -> Nullable<Date>,
+        created_at -> Timestamptz,
+        updated_at -> Nullable<Timestamptz>,
+        #[max_length = 255]
+        created_by -> Nullable<Varchar>,
+        #[max_length = 255]
+        updated_by -> Nullable<Varchar>,
     }
 }
 
@@ -107,8 +142,12 @@ diesel::table! {
         id -> Int2,
         #[max_length = 60]
         name -> Varchar,
-        created_at -> Date,
-        updated_at -> Nullable<Date>,
+        created_at -> Timestamptz,
+        updated_at -> Nullable<Timestamptz>,
+        #[max_length = 255]
+        created_by -> Nullable<Varchar>,
+        #[max_length = 255]
+        updated_by -> Nullable<Varchar>,
     }
 }
 
